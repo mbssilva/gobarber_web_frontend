@@ -3,8 +3,13 @@ import propTypes from 'prop-types';
 
 import { Route as RouteImported, Redirect } from 'react-router-dom';
 
+import AuthLayout from '../pages/layouts/authentication';
+import DefaultLayout from '../pages/layouts/default';
+
 function RouteExported({ component: Component, isPrivate, ...rest }) {
   const signed = false;
+
+  const Layout = signed ? DefaultLayout : AuthLayout;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
@@ -14,7 +19,16 @@ function RouteExported({ component: Component, isPrivate, ...rest }) {
     return <Redirect to="/dashboard" />;
   }
 
-  return <RouteImported {...rest} component={Component} />;
+  return (
+    <RouteImported
+      {...rest}
+      component={(props) => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  );
 }
 
 RouteExported.propTypes = {
