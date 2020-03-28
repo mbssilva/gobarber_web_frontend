@@ -6,8 +6,10 @@ import { Route as RouteImported, Redirect } from 'react-router-dom';
 import AuthLayout from '../pages/layouts/authentication';
 import DefaultLayout from '../pages/layouts/default';
 
+import store from '../store';
+
 function RouteExported({ component: Component, isPrivate, ...rest }) {
-  const signed = false;
+  const { signed } = store.getState().auth;
 
   const Layout = signed ? DefaultLayout : AuthLayout;
 
@@ -35,7 +37,6 @@ RouteExported.propTypes = {
   isPrivate: propTypes.bool,
   component: propTypes.oneOfType([propTypes.element, propTypes.func])
     .isRequired,
-  // rest: propTypes.func,
 };
 
 RouteExported.defaultProps = {
