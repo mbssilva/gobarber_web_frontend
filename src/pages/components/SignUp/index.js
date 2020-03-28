@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -6,6 +7,8 @@ import * as Yup from 'yup';
 // import { Container } from './styles';
 
 import logo from '../../../assets/logo.svg';
+
+import { signUpRequest } from '../../../store/modules/auth/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Insira um nome'),
@@ -16,8 +19,13 @@ const schema = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   function handleSubmit(data) {
-    console.tron.log(data);
+    const { name, email, password } = data;
+
+    dispatch(signUpRequest(name, email, password));
   }
 
   return (
@@ -25,10 +33,10 @@ export default function SignUp() {
       <img src={logo} alt="gobarber" />
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="name" type="text" placeholder="Seu nome" />
-        <Input name="text" type="email" placeholder="Seu e-mail" />
+        <Input name="email" type="text" placeholder="Seu e-mail" />
         <Input name="password" type="password" placeholder="Sua senha" />
 
-        <button type="submit">Criar conta</button>
+        <button type="submit">{loading ? 'Carregando ...' : 'Acessar'}</button>
         <Link to="/">Já sou cadastrado</Link>
       </Form>
     </>
