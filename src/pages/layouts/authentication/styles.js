@@ -35,6 +35,16 @@ export const Content = styled.div`
       }
     }
 
+    span {
+      letter-spacing: 0.8px;
+      color: #fb1f24;
+      padding: 1px 3px;
+      border-radius: 4px;
+      margin: 0 0 10px;
+      font-weight: bold;
+      align-self: flex-start;
+    }
+
     button {
       background-color: #3b9eff;
       border: 0;
