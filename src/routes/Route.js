@@ -6,7 +6,7 @@ import { Route as RouteImported, Redirect } from 'react-router-dom';
 import AuthLayout from '../pages/layouts/authentication';
 import DefaultLayout from '../pages/layouts/default';
 
-import store from '../store';
+import { store } from '../store';
 
 function RouteExported({ component: Component, isPrivate, ...rest }) {
   const { signed } = store.getState().auth;
