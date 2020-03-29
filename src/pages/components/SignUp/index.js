@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const loading = useSelector(state => state.auth.loading);
+  const loading = useSelector((state) => state.auth.loading);
 
   function handleSubmit(data) {
     const { name, email, password } = data;
