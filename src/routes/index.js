@@ -8,7 +8,7 @@ import SignIn from '../pages/components/SignIn';
 import SignUp from '../pages/components/SignUp';
 
 import Dashboard from '../pages/components/Dashboard';
-import Profiles from '../pages/components/Profiles';
+import Profiles from '../pages/components/Profile';
 
 function Routes() {
   return (
