@@ -1,6 +1,5 @@
 import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
-// import Reactotron from 'reactotron-react-js';
 
 import createStore from './createStore';
 

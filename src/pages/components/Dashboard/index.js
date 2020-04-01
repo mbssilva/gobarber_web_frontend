@@ -36,10 +36,8 @@ export default function Dashboard() {
         const response = await api.get('/schedule', {
           params: { date },
         });
-        console.tron.warn(response);
-        const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
 
-        // console.tron.warn(isEqual(parseISO(response.data[0].date), compareDate));
+        const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
 
         const data = range.map((hour) => {
           const auxDate = setMilliseconds(
@@ -47,8 +45,6 @@ export default function Dashboard() {
             0
           );
           const compareDate = utcToZonedTime(auxDate, timeZone);
-
-          console.tron.warn(compareDate);
 
           return {
             time: `${hour}:00h`,
@@ -58,8 +54,6 @@ export default function Dashboard() {
             ),
           };
         });
-
-        console.tron.log(data);
 
         setSchedule(data);
       } catch (err) {}
