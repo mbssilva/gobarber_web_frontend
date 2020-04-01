@@ -3,7 +3,9 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 600px;
-  margin: 10px auto;
+  min-height: 100%;
+  margin: 10px auto 0;
+  padding-bottom: 10px;
 
   form {
     display: flex;
@@ -67,7 +69,7 @@ export const Container = styled.div`
   }
 
   > button {
-    display: blocck;
+    display: block;
     width: 100%;
     background-color: #fb1f2f;
     border: 0;
