@@ -6,6 +6,7 @@ import { Container } from './styles';
 
 import AvatarInput from './AvatarInput';
 
+import { signOut } from '../../../store/modules/auth/actions';
 import { updateProfileRequest } from '../../../store/modules/user/actions';
 
 export default function Profiles() {
@@ -14,6 +15,10 @@ export default function Profiles() {
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
+  }
+
+  function handleSignOut() {
+    dispatch(signOut());
   }
 
   return (
@@ -32,14 +37,16 @@ export default function Profiles() {
         <Input type="password" name="password" placeholder="Nova senha" />
         <Input
           type="password"
-          name="confirmPassword"
+          name="passwordConfirmation"
           placeholder="Confirmação de senha"
         />
 
         <button type="submit">Atualizar perfil</button>
       </Form>
       <hr />
-      <button type="button">Sair do GoBarber</button>
+      <button type="button" onClick={handleSignOut}>
+        Sair do GoBarber
+      </button>
     </Container>
   );
 }
